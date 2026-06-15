@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Guess</title>
+  </head>
+  <body>
+    <h2 id="result"></h2>
+
+    <script>
+      let minnum = 1;
+      let maxnum = 100;
+      let answer = Math.floor(Math.random() * (maxnum - minnum + 1)) + minnum;
+
+      let attempts = 0;
+      let running = true;
+
+      while (running) {
+        let userinput = Number(
+          window.prompt(`Guess the number between ${minnum} - ${maxnum}`),
+        );
+
+        attempts++;
+
+        if (userinput < answer) {
+          alert("Too low!");
+        } else if (userinput > answer) {
+          alert("Too high!");
+        } else {
+          alert(`Correct! Attempts: ${attempts}`);
+          running = false;
+        }
+      }
+      document.getElementById("result").innerHTML=`Correct Number : ${answer} \n Attempts : ${attempts} attempts`;
+    </script>
+  </body>
+</html>
