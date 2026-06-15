@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Number</title>
+    <style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  h1 {
+    color: #333;
+  }
+
+  input {
+    width: 120px;
+    padding: 8px;
+    margin: 10px;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+
+  #range {
+    color: #555;
+    margin-top: 20px;
+  }
+
+  .dice {
+    font-size: 60px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 20px;
+    color: #2563eb;
+  }
+</style>
+  </head>
+  <body>
+    <h1>Dice Roller</h1>
+    <label>Minimum in Range</label>
+    <input type="text" id="min" />
+    <br />
+
+    <label>Maximum in Range</label>
+    <input type="text" id="max" />
+
+    <h3 id="range"></h3>
+
+    <button onclick="generate()">Generate</button><br>
+    <p id="dice1" class="dice"></p>
+    <p id="dice2" class="dice"></p>
+
+    <script>
+      function generate() {
+  let min = Number(document.getElementById("min").value);
+  let max = Number(document.getElementById("max").value);
+
+        document.getElementById("range").textContent =
+          `Our Range is : ${min} - ${max}`;
+        let d1 = Math.floor(Math.random() * (max - min)) + min;
+        let d2 = Math.floor(Math.random() * (max - min)) + min;
+
+        document.getElementById("dice1").innerHTML = d1;
+        document.getElementById("dice2").textContent = d2;
+      }
+    </script>
+  </body>
+</html>
+
+<!-- 
+Rule
+Math.floor(Math.random() * max) + min
+    Only works correctly when min = 1.
+
+Math.floor(Math.random() * (max - min + 1)) + min
+    Works for any min and max values and is the recommended formula.
+-->
