@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#7de3e4;
+}
+
+.container{
+    width:380px;
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+h1{
+    text-align:center;
+    font-size:24px;
+    color:#333;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.subtitle{
+    text-align:center;
+    color:#777;
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+input[type="number"]{
+    width:100%;
+    padding:12px;
+    border:2px solid #e5e5e5;
+    border-radius:8px;
+    margin:10px 0 20px;
+    outline:none;
+    font-size:15px;
+}
+
+input[type="number"]:focus{
+    border-color:#35d6d6;
+}
+
+.options{
+    margin:20px 0;
+}
+
+.option{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:12px 0;
+    color:#444;
+    font-size:14px;
+}
+
+input[type="checkbox"]{
+    accent-color:#35d6d6;
+    width:18px;
+    height:18px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#35d6d6;
+    color:white;
+    font-size:15px;
+    font-weight:500;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#27c2c2;
+}
+
+#result{
+    margin-top:20px;
+    padding:12px;
+    border:2px solid #e5e5e5;
+    border-radius:8px;
+    min-height:50px;
+    word-break:break-all;
+    color:#333;
+    font-weight:500;
+    text-align:center;
+}
