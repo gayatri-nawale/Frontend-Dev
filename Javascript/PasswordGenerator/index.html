@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <body>
+      <div class="container">
+        <h1>Password Generator</h1>
+
+        <label for="length">Password Length:</label>
+        <input type="number" id="length" min="1" max="50" />
+
+        <div class="options">
+          <div class="option">
+            <input type="checkbox" id="op1" />
+            <label for="op1">Lowercase</label>
+          </div>
+
+          <div class="option">
+            <input type="checkbox" id="op2" />
+            <label for="op2">Uppercase</label>
+          </div>
+
+          <div class="option">
+            <input type="checkbox" id="op3" />
+            <label for="op3">Symbols</label>
+          </div>
+
+          <div class="option">
+            <input type="checkbox" id="op4" />
+            <label for="op4">Numbers</label>
+          </div>
+        </div>
+
+        <button onclick="generatepass()">Generate Password</button>
+
+        <h2 id="result"></h2>
+      </div>
+    </body>
+    <script>
+      function generatepass() {
+        let length = document.getElementById("length").value;
+        let lowercase = document.getElementById("op1").checked;
+        let uppercase = document.getElementById("op2").checked;
+        let symbols = document.getElementById("op3").checked;
+        let numbers = document.getElementById("op4").checked;
+
+        console.log(lowercase, uppercase, symbols, numbers);
+        if (length <= 0) {
+          alert("Please enter a valid password length greater than 0.");
+          return;
+        }
+
+        // Condition 2: At least one checkbox must be selected
+        if (!lowercase && !uppercase && !symbols && !numbers) {
+          alert("Please select at least one character type.");
+          return;
+        }
+        const lower = "abcdefghijklmnopqrstuvwxyz";
+        const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const nums = "1234567890";
+        const symb = "!@#$%^&*()_-?/";
+
+        let password = "";
+        let allowedchar = "";
+        allowedchar += lowercase ? lower : "";
+        allowedchar += uppercase ? upper : "";
+        allowedchar += symbols ? symb : "";
+        allowedchar += numbers ? nums : "";
+
+        for (let i = 0; i < length; i++) {
+          let randomindex = Math.floor(Math.random() * allowedchar.length);
+          password += allowedchar[randomindex];
+        }
+
+        document.getElementById("result").textContent = password;
+      }
+    </script>
+  </body>
+</html>
