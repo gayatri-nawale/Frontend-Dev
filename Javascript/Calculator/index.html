@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="heading1">Calculator</h1>
+      <input type="text" id="input" />
+      <div class="btns">
+    <button onclick="clearDisplay()">AC</button>
+    <button onclick="appendtodisplay('%')">%</button>
+    <button onclick="appendtodisplay('/')">/</button>
+    <button onclick="appendtodisplay('*')">*</button>
+
+    <button onclick="appendtodisplay('7')">7</button>
+    <button onclick="appendtodisplay('8')">8</button>
+    <button onclick="appendtodisplay('9')">9</button>
+    <button onclick="appendtodisplay('-')">-</button>
+
+    <button onclick="appendtodisplay('4')">4</button>
+    <button onclick="appendtodisplay('5')">5</button>
+    <button onclick="appendtodisplay('6')">6</button>
+    <button onclick="appendtodisplay('+')">+</button>
+
+    <button onclick="appendtodisplay('1')">1</button>
+    <button onclick="appendtodisplay('2')">2</button>
+    <button onclick="appendtodisplay('3')">3</button>
+    <button onclick="calculate()">=</button>
+
+    <button onclick="appendtodisplay('00')">00</button>
+    <button onclick="appendtodisplay('0')">0</button>
+    <button onclick="appendtodisplay('.')">.</button>
+</div>
+    </div>
+
+    <script>
+      let operands = document.getElementById("input");
+
+      function appendtodisplay(input) {
+        operands.value += input;
+      }
+
+      function calculate() {
+        try {
+          operands.value = eval(operands.value);
+        } catch (e) {
+          operands.value = "Error";
+        }
+      }
+
+      function clearDisplay() {
+        operands.value = "";
+      }
+    </script>
+  </body>
+</html>
