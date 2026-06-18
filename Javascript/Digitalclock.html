@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        .container{
+            height:100vh;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            gap:15px;
+        }
+
+        #clock{
+            font-size:3rem;
+        }
+
+        #calendar{
+            font-size:1.5rem;
+        }
+
+        select{
+            padding:8px;
+            font-size:1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <select id="format">
+            <option value="12">12 Hour Format</option>
+            <option value="24">24 Hour Format</option>
+        </select>
+
+        <h1 id="clock"></h1>
+        <h2 id="calendar"></h2>
+
+    </div>
+
+    <script>
+
+        function updateClock(){
+
+            const date = new Date();
+
+            let hr = date.getHours();
+            let min = String(date.getMinutes()).padStart(2,"0");
+            let sec = String(date.getSeconds()).padStart(2,"0");
+
+            let format = document.getElementById("format").value;
+
+            let timeString;
+
+            if(format === "12"){
+
+                let period = hr >= 12 ? "PM" : "AM";
+                hr = hr % 12 || 12;
+
+                timeString = `${hr}:${min}:${sec} ${period}`;
+
+            }else{
+
+                hr = String(hr).padStart(2,"0");
+
+                timeString = `${hr}:${min}:${sec}`;
+            }
+
+            const days = [
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+            ];
+
+            const dayName = days[date.getDay()];
+
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+
+            document.getElementById("clock").textContent = timeString;
+
+            document.getElementById("calendar").textContent =
+                `${dayName}, ${day}-${month}-${year}`;
+        }
+
+        setInterval(updateClock,1000);
+
+    </script>
+
+</body>
+</html>
